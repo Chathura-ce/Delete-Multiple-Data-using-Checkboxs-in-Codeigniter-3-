@@ -10,7 +10,7 @@
     <h3 align="center">Delete Multiple Data using Checkboxs in Codeigniter 3 with Ajax</h3><br/>
 
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table id="main_table" class="table table-bordered">
             <thead>
             <tr>
                 <th width="10%">
@@ -29,7 +29,7 @@
             <?php
             foreach ($employee_data->result() as $row) {
                 echo '
-                 <tr class="delete">
+                 <tr id="delete" class="delete">
                  <td><input type="checkbox" class="delete_checkbox" value="' . $row->id . '" /></td>
                  <td>' . $row->name . '</td>
                  <td>' . $row->address . '</td>
@@ -54,7 +54,7 @@
 <script>
     $(document).ready(function () {
         $(".delete_checkbox").prop("checked", false);
-        $(".check").prop("checked", false);
+        $(".checkall").prop("checked", false);
     });
 
     $('.delete_checkbox').click(function () {
@@ -67,14 +67,12 @@
 
     $('#checkall').click(function () {
         if (document.getElementById("checkall").checked == true) {
-
             $(".delete_checkbox").prop("checked", true);
-            $(".delete").attr("class", "removeRow");
+            $(".delete").addClass("removeRow");
 
         } else if (document.getElementById("checkall").checked == false) {
-
             $(".delete_checkbox").prop("checked", false);
-            $(".delete").removeClass('removeRow');
+            $(".delete").removeClass("removeRow");
         }
     });
 
